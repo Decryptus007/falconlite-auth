@@ -34,6 +34,9 @@ function Verification() {
   }, [])
 
   const handleChange = (code) => setOtp(code);
+  useEffect(() => {
+    if (otp.length === 5) verifyUser()
+  }, [otp])
 
   const navigate = useNavigate()
 
@@ -65,6 +68,7 @@ function Verification() {
             MySwal.fire({
               title: <p className='text-sm'>{result.data.message}</p>,
               icon: 'error',
+              confirmButtonColor: '#0ea5e9',
             })
             setIsLoading(false)
           }
@@ -73,6 +77,7 @@ function Verification() {
           MySwal.fire({
             title: <p className='text-sm'>The server encountered an error verifyong your email, please kindly check your network and retry</p>,
             icon: 'error',
+            confirmButtonColor: '#0ea5e9',
           })
           setIsLoading(false)
         });
