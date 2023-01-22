@@ -66,7 +66,7 @@ function Verification() {
             }, 2000);
           } else {
             MySwal.fire({
-              title: <p className='text-sm'>{result.data.message}</p>,
+              title: <p className='text-sm'>{`${result.data.message} or incorrect code`}</p>,
               icon: 'error',
               confirmButtonColor: '#0ea5e9',
             })

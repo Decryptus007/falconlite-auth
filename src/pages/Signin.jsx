@@ -108,7 +108,7 @@ function Signin() {
               <button onClick={signupFunc}
                 className="mt-4 py-2 w-5/6 mx-auto rounded-lg bg-sky-500 flex items-center justify-center gap-4"
               >
-                Sign up {isLoading && <ButtonLoader />}
+                Sign in {isLoading && <ButtonLoader />}
               </button>
               <span className='text-center text-gray-700'>New to the platform?
                 <Link to={"/signup"} className="text-sky-500 underline"> Sign up</Link>
