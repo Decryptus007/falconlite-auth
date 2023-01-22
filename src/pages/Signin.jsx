@@ -22,9 +22,7 @@ function Signin() {
   })
 
   const [signupData, setSignupData] = useState({
-    fname: "",
     email: "",
-    phone: "",
     password: ""
   })
   const [passwordShow, setPasswordShow] = useState(false)
@@ -46,51 +44,12 @@ function Signin() {
     if (values && signupData.email.match(mailformat)) {
       setIsLoading(true)
 
-      var urlencoded = new URLSearchParams();
-      urlencoded.append("name", signupData.fname);
-      urlencoded.append("email", signupData.email);
-      urlencoded.append("phone", signupData.phone);
-      urlencoded.append("password", signupData.password);
-
-      var requestOptions = {
-        method: 'POST',
-        body: urlencoded,
-        redirect: 'follow'
-      };
-
-      fetch("https://falconlite.com/v1/api/send-email", requestOptions)
-        .then(response => response.json())
-        .then(result => {
-          if (result.data.message.includes("Verification")) {
-            MySwal.fire({
-              title: <>
-                <p className='text-base'>Account created successfully</p>
-                <span className="text-sm">We've sent you a code to verify your account via email</span>
-                <span className="text-sm block">Press Ok to continue</span>
-              </>,
-              icon: 'success',
-              allowEscapeKey: false,
-              allowOutsideClick: false,
-              confirmButtonColor: '#0ea5e9',
-              showLoaderOnConfirm: true,
-              preConfirm: async () => navigate("/verification"),
-            })
-          } else {
-            Toast.fire({
-              icon: 'error',
-              title: result.data.message
-            })
-            setIsLoading(false)
-          }
-
-          sessionStorage.setItem("verify", true)
-        })
-        .catch(error => {
-          Toast.fire({
-            icon: 'error',
-            title: "Error creating your account"
-          })
-        });
+      MySwal.fire({
+        title: <p className='text-base'>This is just a demo</p>,
+        icon: 'info',
+        confirmButtonColor: '#0ea5e9'
+      })
+      setIsLoading(false)
     } else {
       Toast.fire({
         icon: 'error',
